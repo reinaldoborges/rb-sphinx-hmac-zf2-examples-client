@@ -71,7 +71,17 @@ for( $i = 1; $i <= 3; $i++ ) {
 	/**
 	 * Enviar requisição
 	 */
-	$response = $cliente->send();
+	try {
+		$cliente->send();
+	} catch (Exception $e) {
+		/**
+		 * ERRO
+		 */
+		echo "##### ERRO #####", PHP_EOL;
+		echo $e->getCode(), ' : ', $e->getMessage(), PHP_EOL;
+		echo "##### ERRO #####", PHP_EOL, PHP_EOL;
+	}
+	$response = $cliente->getResponse();
 	
 	/**
 	 * Resposta

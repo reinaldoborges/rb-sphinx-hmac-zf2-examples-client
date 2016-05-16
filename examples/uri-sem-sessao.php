@@ -70,16 +70,28 @@ $signedUri = $cliente->getSignedUri();
 /**
  * Enviar requisição
  */
-$response = $cliente->send();
+try {
+	$cliente->send();
+	
+	/**
+	 * Resposta
+	 */
+	echo "Request URI: ", $uri, PHP_EOL, PHP_EOL;
+	
+	echo "Request Signed URI: ", $signedUri, PHP_EOL, PHP_EOL;
+	
+	echo "Request Signed URI: ", $cliente->getSignedUri(), PHP_EOL, PHP_EOL;
+	
+} catch (Exception $e) {
+	/**
+	 * ERRO
+	 */
+	echo "##### ERRO #####", PHP_EOL;
+	echo $e->getCode(), ' : ', $e->getMessage(), PHP_EOL;
+	echo "##### ERRO #####", PHP_EOL, PHP_EOL;
+}
 
-/**
- * Resposta
- */
-echo "Request URI: ", $uri, PHP_EOL, PHP_EOL;
-
-echo "Request Signed URI: ", $signedUri, PHP_EOL, PHP_EOL;
-
-echo "Request Signed URI: ", $cliente->getSignedUri(), PHP_EOL, PHP_EOL;
+$response = $cliente->getResponse();
 
 echo "Response Status Code: ", $response->getStatusCode(), PHP_EOL, PHP_EOL;
 

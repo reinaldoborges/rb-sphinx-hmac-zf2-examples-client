@@ -61,13 +61,25 @@ $cliente->setRawBody('Mensagem');
 /**
  * Enviar requisição
  */
-$response = $cliente->send();
+try {
+	$cliente->send();
+	
+	/**
+	 * Resposta
+	 */
+	echo "Request HMAC Header:", PHP_EOL;
+	echo '     ', HMACHttpClient::HEADER_NAME, ' = ', $cliente->getHeader( HMACHttpClient::HEADER_NAME ), PHP_EOL, PHP_EOL;
 
-/**
- * Resposta
- */
-echo "Request HMAC Header:", PHP_EOL;
-echo '     ', HMACHttpClient::HEADER_NAME, ' = ', $cliente->getHeader( HMACHttpClient::HEADER_NAME ), PHP_EOL, PHP_EOL;
+} catch (Exception $e) {
+	/**
+	 * ERRO
+	 */
+	echo "##### ERRO #####", PHP_EOL;
+	echo $e->getCode(), ' : ', $e->getMessage(), PHP_EOL;
+	echo "##### ERRO #####", PHP_EOL, PHP_EOL;
+}
+
+$response = $cliente->getResponse();
 
 echo "Response Status Code: ", $response->getStatusCode(), PHP_EOL, PHP_EOL;
 
