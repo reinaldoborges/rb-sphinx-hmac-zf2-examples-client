@@ -14,6 +14,7 @@ use RB\Sphinx\Hmac\Nonce\DummyNonce;
  */
 use RB\Sphinx\Hmac\Zend\Client\HMACHttpClient;
 use RB\Sphinx\Hmac\Zend\Server\HMACHeaderAdapter;
+use RB\Sphinx\Hmac\Hash\DummyHash;
 
 /**
  * Autoloader Composer
@@ -53,6 +54,8 @@ $hmac->setNonceValue('meuNonce');
 $cliente = new HMACHttpClient( $uri );
 $cliente->setMethod('GET');
 $cliente->setHmac($hmac);
+
+$cliente->setParameterGet(['teste2'=>'sim2']);
 
 /**
  * Definir modo de autenticação na URI

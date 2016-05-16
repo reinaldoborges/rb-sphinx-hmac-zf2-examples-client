@@ -13,7 +13,6 @@ use RB\Sphinx\Hmac\Nonce\DummyNonce;
  * Implementação para ZF2
  */
 use RB\Sphinx\Hmac\Zend\Client\HMACHttpClient;
-use RB\Sphinx\Hmac\Zend\Server\HMACHeaderAdapter;
 
 /**
  * Autoloader Composer
@@ -78,7 +77,7 @@ for( $i = 1; $i <= 3; $i++ ) {
 	 * Resposta
 	 */
 	echo "Request HMAC Header:", PHP_EOL;
-	$re = "/(" . HMACHeaderAdapter::HEADER_NAME . ")+(.*)/";
+	$re = "/(" . HMACHttpClient::HEADER_NAME . ")+(.*)/";
 	$matches = array();
 	if( preg_match($re, $cliente->getLastRawRequest(), $matches) > 0 ) {
 		echo '     ', $matches[0], PHP_EOL;

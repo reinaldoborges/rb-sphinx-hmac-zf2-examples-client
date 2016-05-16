@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/reinaldoborges/rb-sphinx-hmac-zf2.git"
+            "url": "https://github.com/reinaldoborges/rb-sphinx-hmac-zf2-client.git"
         },
         {
             "type": "git",
@@ -21,6 +21,6 @@
     ],
     "require": {
         "php": ">=5.5",
-		"rb/sphinx-hmac-zf2": "dev-develop"
+		"rb/sphinx-hmac-zf2-client": "dev-develop"
     }
 }
